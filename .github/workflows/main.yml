@@ -25,7 +25,7 @@ jobs:
         run: |
           Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
           Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-          New-LocalUser "Epzi" -Password (ConvertTo-SecureString -AsPlainText "12345678" -Force) -FullName "Epzi User"
+          New-LocalUser "Epzi" -Password (ConvertTo-SecureString -AsPlainText "Epzi@1128!" -Force) -FullName "Epzi User"
           Add-LocalGroupMember -Group "Remote Desktop Users" -Member "Epzi"
           Add-LocalGroupMember -Group "Administrators" -Member "Epzi"
           Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
@@ -36,7 +36,7 @@ jobs:
           Write-Host "            RDP Connection Details - Epzi Channel"
           Write-Host "======================================================================"
           Write-Host "Username:    Epzi (Administrator)"
-          Write-Host "Password:    12345678"
+          Write-Host "Password:    Epzi@1128!"
           Write-Host "Please find the RDP Address in the ngrok logs below."
           Write-Host "======================================================================"
           .\ngrok\ngrok.exe tcp 3389 --log=stdout
